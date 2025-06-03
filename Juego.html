@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego X y 0</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilo.css" />
+  </head>
+  <body class="text-center p-4">
+    <!--  bienvenida -->
+    <div
+      class="d-flex justify-content-center align-items-center min-vh-100"
+      id="welcomeWrapper"
+    >
+      <div id="welcomeScreen" class="container">
+        <h1 class="mb-3 display-4 text-success fw-bold">
+          ¡Bienvenido al Juego de ✖️ y ⭕️!
+        </h1>
+        <p class="lead text-primary fw-semibold">Reglas:</p>
+        <ul class="list-unstyled text-dark fs-5">
+          <li style="color: aliceblue">🔹 Gana quien logre 3 en línea.</li>
+          <li style="color: aliceblue">
+            🔹 El juego alterna turnos automáticamente.
+          </li>
+          <li style="color: aliceblue">
+            🔹 Puedes reiniciar o cambiar jugador en cualquier momento.
+          </li>
+        </ul>
+        <p class="text-info fw-bold fs-4">Elige tu símbolo para comenzar:</p>
+        <button
+          class="btn btn-lg btn-outline-primary me-3"
+          onclick="selectPlayer('X')"
+        >
+          ✖️ Jugador X
+        </button>
+        <button
+          class="btn btn-lg btn-outline-danger"
+          onclick="selectPlayer('O')"
+        >
+          ⭕ Jugador O
+        </button>
+      </div>
+    </div>
+
+    <!--  juego -->
+    <div
+      class="d-flex justify-content-center align-items-center min-vh-100 d-none"
+      id="gameScreen"
+    >
+      <div class="container text-center">
+        <h2 class="mb-4 text-white">Juego de ✖️ y ⭕️</h2>
+
+        <div
+          class="d-flex justify-content-center align-items-center mb-4 gap-4 flex-wrap"
+        >
+          <div class="text-start text-primary fs-5">
+            <p class="fw-bold">✖️ Jugador X</p>
+            <p>Victorias: <span id="scoreX">0</span></p>
+          </div>
+
+          <div
+            id="board"
+            class="d-grid"
+            style="
+              width: 300px;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 5px;
+            "
+          ></div>
+
+          <div class="text-end text-danger fs-5">
+            <p class="fw-bold" style="color: black;">⭕ Jugador O</p>
+            <p>Victorias: <span id="scoreO">0</span></p>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <span class="fw-bold text-warning fs-4" id="turnInfo"></span>
+        </div>
+
+        <div class="mt-3">
+          <button class="btn btn-warning me-2" onclick="resetGame()">
+            🔄 Jugar otra vez
+          </button>
+          <button class="btn btn-secondary" onclick="resetAll()">
+            ↩️ Cambiar jugador
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- resultado -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-3 border-success">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title">Resultado</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body fs-4" id="resultMessage"></div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-warning"
+              onclick="resetGame()"
+              data-bs-dismiss="modal"
+            >
+              🔄 Jugar otra vez
+            </button>
+            <button
+              class="btn btn-secondary"
+              onclick="resetAll()"
+              data-bs-dismiss="modal"
+            >
+              ↩️ Cambiar jugador
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
